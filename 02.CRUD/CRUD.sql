@@ -39,13 +39,20 @@ WHERE [JobTitle] = 'Sales Representative'
 SELECT [FirstName], [LastName], [JobTitle]
 FROM [Employees]
 WHERE [Salary] >= 20000 AND [Salary] <= 30000
+--WHERE [Salary] BETWEEN 20000 AND 30000
 
 --9thExercise
 
 SELECT [FirstName] + ' ' + [MiddleName] +  ' ' + [LastName] 
-FROM [Employees]
-AS [Full Name]
-WHERE [Salary] IN (25000, 14000, 12500, 23600)
+  FROM [Employees]
+	AS [Full Name]
+ WHERE [Salary] IN (25000, 14000, 12500, 23600)
+
+ --SELECT CONCAT([FirstName], ' ', [MiddleName], ' ', [LastName])
+ --SELECT CONCAT_WS(' ', [FirstName], [MiddleName], [LastName])
+	--AS [Full Name]
+ -- FROM [Employees]
+ --WHERE [Salary] IN (25000, 14000, 12500, 23600)
 
 --10thExercise
 
@@ -83,9 +90,15 @@ ORDER BY
 
 --15thExercise
 
-CREATE VIEW V_EmployeesSalaries AS
-	SELECT [FirstName], [LastName], [Salary]
-	FROM [Employees]
+GO
+CREATE VIEW [V_EmployeesSalaries] 
+		 AS
+			(
+				SELECT CONCAT([FirstName], ' ', [LastName], ' ', [Salary])
+				FROM [Employees]
+			)
+GO
+	
 
 --16thExercise
 
